@@ -3,6 +3,7 @@
 const http = require('http');
 const express = require('express');
 const { urlencoded } = require('body-parser');
+const cors = require('cors');
 const twilio = require('twilio');
 const ClientCapability = twilio.jwt.ClientCapability;
 const VoiceResponse = twilio.twiml.VoiceResponse;
@@ -10,6 +11,8 @@ const VoiceResponse = twilio.twiml.VoiceResponse;
 let app = express();
 app.use(express.static(__dirname + '/public'));
 app.use(urlencoded({ extended: false }));
+
+app.use(cors());
 
 require('dotenv').load();
 
